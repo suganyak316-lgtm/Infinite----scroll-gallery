@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infinite Scroll Photo Gallery</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+
+    <header class="header">
+
+        <div class="logo">
+            <i class="fa-solid fa-camera-retro"></i>
+            <h1>Infinite Scroll Gallery</h1>
+        </div>
+
+        <p>
+            Explore stunning images from Unsplash with
+            infinite scrolling and smart search.
+        </p>
+
+    </header>
+
+    <!-- Search Bar -->
+
+    <section class="search-section">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="searchInput"
+                placeholder="Search photos..."
+            >
+
+        </div>
+
+    </section>
+
+    <!-- Collections -->
+
+    <section class="collections">
+
+        <button class="collection-btn active"
+            data-query="">
+            Editorial
+        </button>
+
+        <button class="collection-btn"
+            data-query="nature">
+            Nature
+        </button>
+
+        <button class="collection-btn"
+            data-query="mountains">
+            Mountains
+        </button>
+
+        <button class="collection-btn"
+            data-query="architecture">
+            Architecture
+        </button>
+
+        <button class="collection-btn"
+            data-query="travel">
+            Travel
+        </button>
+
+        <button class="collection-btn"
+            data-query="technology">
+            Technology
+        </button>
+
+        <button class="collection-btn"
+            data-query="food">
+            Food
+        </button>
+
+        <button class="collection-btn"
+            data-query="animals">
+            Animals
+        </button>
+
+    </section>
+
+    <!-- Error Message -->
+
+    <div id="errorContainer" class="error-container">
+
+        <p id="errorMessage"></p>
+
+        <button id="retryBtn">
+            Retry
+        </button>
+
+    </div>
+
+    <!-- Empty State -->
+
+    <div id="emptyState" class="empty-state">
+
+        <i class="fa-regular fa-face-frown"></i>
+
+        <h2>No Photos Found</h2>
+
+        <p>
+            Try searching for something else.
+        </p>
+
+    </div>
+
+    <!-- Gallery -->
+
+    <main>
+
+        <div id="gallery" class="gallery"></div>
+
+    </main>
+
+    <!-- Loading Skeleton -->
+
+    <div id="skeletonContainer"
+        class="skeleton-container">
+
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+        <div class="skeleton-card"></div>
+
+    </div>
+
+    <!-- Sentinel -->
+
+    <div id="sentinel"></div>
+
+    <!-- Scroll Top -->
+
+    <button id="scrollTopBtn">
+
+        <i class="fa-solid fa-arrow-up"></i>
+
+    </button>
+
+    <!-- Lightbox -->
+
+    <div id="lightbox" class="lightbox">
+
+        <button id="closeBtn"
+            class="close-btn">
+            &times;
+        </button>
+
+        <button id="prevBtn"
+            class="nav-btn prev-btn">
+            ❮
+        </button>
+
+        <div class="lightbox-content">
+
+            <img
+                id="lightboxImg"
+                src=""
+                alt=""
+            >
+
+            <div class="lightbox-info">
+
+                <h3 id="photographer">
+                    Photographer
+                </h3>
+
+                <p id="photoDimensions">
+                    Dimensions
+                </p>
+
+                <a
+                    id="downloadBtn"
+                    href="#"
+                    target="_blank"
+                    class="download-btn"
+                >
+                    Download
+                </a>
+
+                <p id="likes">
+                    ❤ 0 Likes
+                </p>
+
+            </div>
+
+        </div>
+
+        <button id="nextBtn"
+            class="nav-btn next-btn">
+            ❯
+        </button>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
