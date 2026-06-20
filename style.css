@@ -1,0 +1,417 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:linear-gradient(135deg,#f8fafc,#e2e8f0);
+    color:#1e293b;
+    min-height:100vh;
+}
+
+/* HEADER */
+
+.header{
+    text-align:center;
+    padding:30px 20px;
+    background:linear-gradient(135deg,#0f766e,#14b8a6);
+    color:white;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+.logo{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+}
+
+.logo i{
+    font-size:2rem;
+}
+
+.logo h1{
+    font-size:2.5rem;
+}
+
+.header p{
+    margin-top:10px;
+    opacity:.9;
+}
+
+/* SEARCH */
+
+.search-section{
+    padding:25px;
+    display:flex;
+    justify-content:center;
+}
+
+.search-box{
+    width:100%;
+    max-width:650px;
+    background:white;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px 20px;
+    border-radius:50px;
+    box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.search-box i{
+    color:#64748b;
+}
+
+.search-box input{
+    border:none;
+    outline:none;
+    width:100%;
+    font-size:1rem;
+    background:transparent;
+}
+
+/* COLLECTIONS */
+
+.collections{
+    display:flex;
+    gap:12px;
+    overflow-x:auto;
+    padding:0 20px 20px;
+    scrollbar-width:none;
+}
+
+.collections::-webkit-scrollbar{
+    display:none;
+}
+
+.collection-btn{
+    border:none;
+    padding:10px 18px;
+    border-radius:30px;
+    cursor:pointer;
+    background:white;
+    color:#334155;
+    font-weight:500;
+    box-shadow:0 4px 10px rgba(0,0,0,.08);
+    transition:.3s;
+    white-space:nowrap;
+}
+
+.collection-btn:hover{
+    transform:translateY(-2px);
+}
+
+.collection-btn.active{
+    background:#14b8a6;
+    color:white;
+}
+
+/* GALLERY */
+/* Masonry using CSS Columns */
+
+.gallery{
+    columns:4 280px;
+    column-gap:12px;
+    padding:12px;
+}
+
+.gallery-item{
+    break-inside:avoid;
+    margin-bottom:12px;
+    border-radius:18px;
+    overflow:hidden;
+    background:white;
+    position:relative;
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(0,0,0,.1);
+    animation:fadeIn .5s ease;
+}
+
+.gallery-item img{
+    width:100%;
+    display:block;
+    transition:.4s;
+    filter:blur(10px);
+}
+
+.gallery-item img.loaded{
+    filter:blur(0);
+}
+
+.gallery-item:hover img{
+    transform:scale(1.05);
+}
+
+.image-info{
+    position:absolute;
+    left:0;
+    right:0;
+    bottom:0;
+    padding:12px;
+    color:white;
+    background:linear-gradient(
+        transparent,
+        rgba(0,0,0,.75)
+    );
+    opacity:0;
+    transition:.3s;
+}
+
+.gallery-item:hover .image-info{
+    opacity:1;
+}
+
+.image-info p{
+    font-size:.9rem;
+}
+
+/* SKELETON LOADER */
+
+.skeleton-container{
+    display:none;
+    columns:4 280px;
+    column-gap:12px;
+    padding:12px;
+}
+
+.skeleton-card{
+    height:300px;
+    border-radius:18px;
+    margin-bottom:12px;
+
+    background:linear-gradient(
+        90deg,
+        #e5e7eb 25%,
+        #f1f5f9 50%,
+        #e5e7eb 75%
+    );
+
+    background-size:200% 100%;
+
+    animation:skeleton 1.5s infinite;
+}
+
+@keyframes skeleton{
+
+    0%{
+        background-position:200% 0;
+    }
+
+    100%{
+        background-position:-200% 0;
+    }
+}
+
+/* ERROR */
+
+.error-container{
+    display:none;
+    text-align:center;
+    margin:20px;
+}
+
+#errorMessage{
+    color:#dc2626;
+    font-weight:600;
+}
+
+#retryBtn{
+    margin-top:10px;
+    border:none;
+    background:#ef4444;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+/* EMPTY STATE */
+
+.empty-state{
+    display:none;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.empty-state i{
+    font-size:4rem;
+    color:#94a3b8;
+}
+
+.empty-state h2{
+    margin-top:15px;
+}
+
+.empty-state p{
+    color:#64748b;
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.95);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    visibility:hidden;
+    transition:.3s;
+    z-index:9999;
+}
+
+.lightbox.active{
+    opacity:1;
+    visibility:visible;
+}
+
+.lightbox-content{
+    text-align:center;
+    max-width:90%;
+}
+
+.lightbox img{
+    max-width:100%;
+    max-height:75vh;
+    border-radius:15px;
+}
+
+.lightbox-info{
+    margin-top:15px;
+    color:white;
+}
+
+.download-btn{
+    display:inline-block;
+    margin:12px 0;
+    text-decoration:none;
+    background:#14b8a6;
+    color:white;
+    padding:10px 20px;
+    border-radius:8px;
+}
+
+.close-btn{
+    position:absolute;
+    top:20px;
+    right:25px;
+    font-size:2rem;
+    border:none;
+    background:none;
+    color:white;
+    cursor:pointer;
+}
+
+.nav-btn{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    width:55px;
+    height:55px;
+    border:none;
+    border-radius:50%;
+    background:rgba(255,255,255,.15);
+    color:white;
+    font-size:1.5rem;
+    cursor:pointer;
+}
+
+.prev-btn{
+    left:20px;
+}
+
+.next-btn{
+    right:20px;
+}
+
+/* SCROLL TOP */
+
+#scrollTopBtn{
+    position:fixed;
+    right:25px;
+    bottom:25px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:#14b8a6;
+    color:white;
+    cursor:pointer;
+    display:none;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+/* SENTINEL */
+
+#sentinel{
+    height:20px;
+}
+
+/* ANIMATION */
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(15px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width:992px){
+
+    .gallery{
+        columns:3 250px;
+    }
+
+    .skeleton-container{
+        columns:3 250px;
+    }
+}
+
+@media(max-width:768px){
+
+    .gallery{
+        columns:2 200px;
+    }
+
+    .skeleton-container{
+        columns:2 200px;
+    }
+
+    .logo h1{
+        font-size:1.8rem;
+    }
+}
+
+@media(max-width:500px){
+
+    .gallery{
+        columns:1;
+    }
+
+    .skeleton-container{
+        columns:1;
+    }
+
+    .search-box{
+        padding:12px 15px;
+    }
+
+    .nav-btn{
+        width:45px;
+        height:45px;
+    }
+}
